@@ -11,7 +11,7 @@ const quemQuando = mongoose.Schema({
     },
     whatsapp: {
         type: Number
-    }
+    },
 }, {_id: false})
 
 const Schema = mongoose.Schema({
@@ -68,7 +68,6 @@ const Schema = mongoose.Schema({
     ],}
 })
 
+const FlaFlu = mongoose.model('FlaFlu', Schema)
 
-const PingPong = mongoose.model('PingPong', Schema)
-
-module.exports = PingPong
+module.exports = FlaFlu
