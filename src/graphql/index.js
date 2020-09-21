@@ -17,7 +17,7 @@ const schema = buildSchema(`
 
     type Mutation {
         register(nome: String!, casa: Int!, whatsapp: Int!, senha: String!): ID
-        checkTimes(horarios: [String!], produto: String!, dia: String!) : [String]
+        checkTimes(produto: String!, dia: String!) : [String]
         markHour(produto: String!, horario: String!, token: ID!, dia: String!) : String
     }
 `)
@@ -31,8 +31,7 @@ const resolvers = {
         const user = await Users.create(args)
         user.senha = undefined
 
-        // const token = CreateJwt(user)
-        const token = '123456'
+        const token = CreateJwt(user)
 
         return token
     },
@@ -43,8 +42,7 @@ const resolvers = {
         if(!user || !await bcrypt.compare(senha, user.senha)) return new Error('Credenciais invalidas')
 
         user.senha = undefined
-        // const token = CreateJwt(user)
-        const token = '123456'
+        const token = CreateJwt(user)
 
         return token
     },

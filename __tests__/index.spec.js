@@ -38,7 +38,7 @@ describe('Login/Register', () => {
 describe('Regras de negócio', () => {
     it('deve receber um array de horarios, um produto e um dia que ainda não tenha sido marcado para o programa criar todos horarios certinhos. E dps retornar todos horarios de volta pois não há nenhum agendado ainda.', async() => {
         const horarios = ['13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00']
-        expect( await resolvers.checkTimes({ produto: "FlaFlu", horarios, dia: '16/09/2020' })).toStrictEqual(horarios)
+        expect( await resolvers.checkTimes({ produto: "FlaFlu", dia: '16/09/2020' })).toStrictEqual(horarios)
     })
     it('Deve receber um horario especifico, um token para pegar as infos do usuario, um produto e retornar uma msg de sucesso para o usuario', async () => {
         expect( await resolvers.markHour({ produto: "FlaFlu", horario: '13:00', token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjVmNjhjNDEzMzA4ZWYwMjA1NGE1MGI2ZCIsIm5vbWUiOiJSb2JlcnQiLCJjYXNhIjoxMiwid2hhdHNhcHAiOjk4NDcxMjYxNSwiX192IjowfSwiaWF0IjoxNjAwNzAxNDU5LCJleHAiOjE2MzIyMzc0NTl9.j7293AZjjXfVIjX7zFvVolP_G64yJvsipLBP5HySeMg', dia: "16/09/2020" })).toStrictEqual('Succes: Horário marcado com sucesso, qualquer dúvida contatar no whatsapp.')
@@ -47,9 +47,8 @@ describe('Regras de negócio', () => {
         expect( await resolvers.markHour({ produto: "FlaFlu", horario: '13:00', token: 'eyJMGI2ZCIsIm5vbaWF06LBP5HySeMg', dia: "16/09/2020" })).toStrictEqual(Error('Houve algo errado... Tente fazer login novamente.'))
     })
     it('Deve receber um array de horarios e retornar apenas os disponiveis', async () => {
-        const horarios = ['13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00']
         const horariosRes = ['13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00']
-        expect( await resolvers.checkTimes({ produto: "PingPong", horarios, dia: '16/09/2020' })).toStrictEqual(horariosRes)
+        expect( await resolvers.checkTimes({ produto: "FlaFlu", dia: '16/09/2020' })).toStrictEqual(horariosRes)
     })
 })
 

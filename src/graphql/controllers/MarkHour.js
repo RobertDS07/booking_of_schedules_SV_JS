@@ -10,7 +10,7 @@ async function MarkHour({ produto, horario, token, dia }) {
     })
     if (!!erro) return new Error(erro)
 
-    const newProduct = await product.findOneAndUpdate({
+    await product.findOneAndUpdate({
         dia,
         'quemQuando': {
             '$elemMatch': {
