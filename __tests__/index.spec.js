@@ -29,7 +29,7 @@ describe('Login/Register', () => {
         expect(await resolvers.login({ whatsapp: 984712615, senha: "123456" })).toStrictEqual(('123456'))
     })
     it('deve retornar um erro caso o login falhe', async() => {
-        expect(await resolvers.login({ whatsapp: 984712615, senha: "1234567" })).toStrictEqual(Error('Credenciais invalidas'))
+        expect(await resolvers.login({ whatsapp: 984712615, senha: "123456" })).toStrictEqual(Error('Credenciais invalidas'))
     })
 })
 
