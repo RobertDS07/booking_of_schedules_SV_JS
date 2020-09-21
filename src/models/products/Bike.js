@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const quemQuando = mongoose.Schema({
     hora: {
@@ -19,8 +19,9 @@ const Schema = mongoose.Schema({
     quemQuando: {
         type: [quemQuando],
         default: [],
-
     }
 })
 
-export const Bike = mongoose.model('Bike', Schema)
+const Bike = mongoose.model('Bike', Schema)
+
+module.exports = Bike

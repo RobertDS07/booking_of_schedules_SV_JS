@@ -1,12 +1,13 @@
-import express from 'express'
-import http from 'http'
-import expressGql from 'express-graphql'
-import mongoose from 'mongoose'
+const express = require('express')
+const http = require('http')
+const {graphqlHTTP} = require('express-graphql')
+const mongoose = require('mongoose')
 
 const app = express()
 const server = http.createServer(app)
 
-import {schema, resolvers} from './graphql/index.js'
+const schema = require('./graphql/index')
+const resolvers = require('./graphql/index')
 
 mongoose.connect(process.env.DB || 'mongodb://localhost:27017/dev', ({
     useCreateIndex: true,
@@ -15,7 +16,7 @@ mongoose.connect(process.env.DB || 'mongodb://localhost:27017/dev', ({
     useFindAndModify: false
 }), () => console.log('db connected'))
 
-app.use('/graphql', expressGql.graphqlHTTP({
+app.use('/graphql', graphqlHTTP({
     schema,
     rootValue: resolvers,
     graphiql: true

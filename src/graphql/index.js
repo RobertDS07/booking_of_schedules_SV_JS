@@ -1,11 +1,14 @@
-import graphql from 'graphql'
+const {buildSchema} = require('graphql')
 
-export const schema = graphql.buildSchema(`
+const schema = buildSchema(`
     type Query {
         hello(args:String): String!
     }
 `)
 
-export const resolvers = {
+const resolvers = {
     hello: ({args}) => args
 }
+
+module.exports = schema
+module.exports = resolvers

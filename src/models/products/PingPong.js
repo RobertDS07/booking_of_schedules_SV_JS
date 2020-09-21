@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const quemQuando = mongoose.Schema({
     hora: {
@@ -26,4 +26,6 @@ const Schema = mongoose.Schema({
     }
 })
 
-export const PingPong = mongoose.model('PingPong', Schema)
+const PingPong = mongoose.model('PingPong', Schema)
+
+module.exports = PingPong
