@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const Schema = new mongoose.Schema({
     nome: {
@@ -22,7 +22,7 @@ const Schema = new mongoose.Schema({
     }
 })
 
-Schema.pre('save', async() => {
+Schema.pre('save', async function() {
     this.senha = await bcrypt.hash(this.senha, 10)
 })
 
