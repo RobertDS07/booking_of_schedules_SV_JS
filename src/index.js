@@ -6,8 +6,7 @@ const mongoose = require('mongoose')
 const app = express()
 const server = http.createServer(app)
 
-const schema = require('./graphql/index')
-const resolvers = require('./graphql/index')
+const {resolvers, schema} = require('./graphql/index')
 
 mongoose.connect(process.env.DB || 'mongodb://localhost:27017/dev', ({
     useCreateIndex: true,

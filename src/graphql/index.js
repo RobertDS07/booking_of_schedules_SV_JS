@@ -1,14 +1,11 @@
 const { buildSchema } = require('graphql')
 const bcrypt = require('bcryptjs')
 
-const RegisterController = require('./controllers/register')
-const CreateJwt = require('./controllers/CreateJwt')
 const Users = require('../models/User')
-// const PingPong = require('../models/products/PingPong')
-// const Bike = require('../models/products/Bike')
-// const FlaFlu = require('../models/products/FlaFlu')
+const CreateJwt = require('./controllers/CreateJwt')
 const CheckTimesController = require('./controllers/CheckTimes')
 const MarkHourController = require('./controllers/MarkHour')
+const RegisterController = require('./controllers/register')
 
 const schema = buildSchema(`
     type Query {
@@ -60,5 +57,7 @@ const resolvers = {
     }
 }
 
-module.exports = schema
-module.exports = resolvers
+module.exports = {
+    schema,
+    resolvers
+}
